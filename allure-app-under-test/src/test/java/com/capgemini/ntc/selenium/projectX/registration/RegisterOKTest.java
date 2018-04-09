@@ -19,19 +19,19 @@ public class RegisterOKTest extends BaseTest {
 	
 	private static RegistrationPage registrationPage;
 	
-	private static String firstName = "John";
-	private static String lastName = "Travolta";
-	private static MaritalStatus maritalStatus = MaritalStatus.SINGLE;
-	private static Hobby[] hobby = { Hobby.READING, Hobby.DANCE };
-	private static String country = "Poland";
-	private static String birthDate = "12-6-1986"; // mm-dd-yyyy
-	private static String phoneNumber = "0077333444555";
-	private static String username = "johnTravolta28";
-	private static String email = "john.travolta28@test.me";
-	private static String yourProfilePhotoPath = "com/example/demo/cucumber/features/registration/graph/ok-graph.gif";
-	private static String aboutYourself = "It's me.";
-	private static String password = "1w@e#r$W_12";
-	private static String confirmPassword = password;
+	private static String			firstName				= "John";
+	private static String			lastName				= "Travolta";
+	private static MaritalStatus	maritalStatus			= MaritalStatus.SINGLE;
+	private static Hobby[]			hobby					= { Hobby.READING, Hobby.DANCE };
+	private static String			country					= "Poland";
+	private static String			birthDate				= "12-6-1986";															// mm-dd-yyyy
+	private static String			phoneNumber				= "0077333444555";
+	private static String			username				= "johnTravolta28";
+	private static String			email					= "john.travolta28@test.me";
+	private static String			yourProfilePhotoPath	= "com/example/demo/cucumber/features/registration/graph/ok-graph.gif";
+	private static String			aboutYourself			= "It's me.";
+	private static String			password				= "1w@e#r$W_12";
+	private static String			confirmPassword			= password;
 	
 	@Override
 	public void setUp() {
@@ -46,8 +46,8 @@ public class RegisterOKTest extends BaseTest {
 	@Test
 	public void Register_OK() {
 		assertTrue("Site title: " + registrationPage.getActualPageTitle(),
-				registrationPage.getActualPageTitle()
-						.equals(PageTitlesEnum.REGISTRATION.toString()));
+						registrationPage.getActualPageTitle()
+										.equals(PageTitlesEnum.REGISTRATION.toString()));
 		
 		registrationPage.setFirstName(firstName);
 		registrationPage.setLastName(lastName);

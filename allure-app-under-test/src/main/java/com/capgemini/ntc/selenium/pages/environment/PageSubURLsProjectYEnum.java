@@ -8,6 +8,12 @@ public enum PageSubURLsProjectYEnum {
 	CHECKBOX("checkboxes"),
 	CONTEXT_MENU("context_menu"),
 	KEY_PRESS("key_presses"),
+	TYPOS("typos"),
+	NOTIFICATIONS("notification_message_rendered"),
+	NESTED_FRAMES("nested_frames"),
+	LARGE_DEEP_DOM("large"),
+	IFRAME("iframe"),
+	FLOATING_MENU("floating_menu"),
 	DYNAMIC_CONTENT("dynamic_content"),
 	HOVERS("hovers"),
 	SORTABLE_DATA_TABLES("tables"),
@@ -18,16 +24,15 @@ public enum PageSubURLsProjectYEnum {
 	LOGIN("login");
 	
 	/*
-	 * Sub urls are used as real locations in Bank test environment
+	 * Sub urls are used as real locations in Bank test environment and for The Internet page
 	 */
 	private String subURL;
 	
 	private PageSubURLsProjectYEnum(String subURL) {
 		this.subURL = subURL;
-	};
+	}
 	
 	private PageSubURLsProjectYEnum() {
-		
 	}
 	
 	@Override

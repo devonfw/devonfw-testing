@@ -27,7 +27,6 @@ public enum PageSubURLsEnum implements SubUrl {
 	REGISTRATION("registration/"),
 	FRAMEANDWINDOWS("frames-and-windows"),
 	MAIN_PAGE(""),
-	FAQ("content/apps/static/faqpopup/index.html"),
 	AUTOMATION_PRACTICE_FORM("automation-practice-form"),
 	TABS("tabs/"),
 	TOOLTIP("tooltip/"),

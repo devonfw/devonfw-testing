@@ -38,7 +38,7 @@ public class TheInternetPage extends BasePage {
 	public boolean isLoaded() {
 		BFLogger.logDebug("The internet page is loaded: " + getDriver().getCurrentUrl());
 		return getDriver().getCurrentUrl()
-						.equals(GetEnvironmentParam.THE_INTERNET_MAIN_PAGE.getValue());
+				.equals(GetEnvironmentParam.THE_INTERNET_MAIN_PAGE.getValue());
 	}
 	
 	@Override
@@ -135,7 +135,7 @@ public class TheInternetPage extends BasePage {
 	
 	public StatusCodesHomePage clickStatusCodesLink() {
 		getDriver().findElementDynamic(selectorStatusCodesLink)
-						.click();
+				.click();
 		return new StatusCodesHomePage();
 	}
 	

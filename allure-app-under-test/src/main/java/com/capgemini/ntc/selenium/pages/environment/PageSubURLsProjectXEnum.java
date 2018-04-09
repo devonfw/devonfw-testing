@@ -16,11 +16,11 @@ public enum PageSubURLsProjectXEnum {
 	 */
 	private String subURL;
 	
-	private PageSubURLsProjectXEnum(String subURL) {
+	PageSubURLsProjectXEnum(String subURL) {
 		this.subURL = subURL;
-	};
+	}
 	
-	private PageSubURLsProjectXEnum() {
+	PageSubURLsProjectXEnum() {
 		
 	}
 	

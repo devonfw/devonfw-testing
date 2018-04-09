@@ -13,7 +13,8 @@ public enum GetEnvironmentParam {
 	WWW_FONT_URL,
 	TOOLS_QA,
 	WEB_SERVICE,
-	THE_INTERNET_MAIN_PAGE;
+	THE_INTERNET_MAIN_PAGE,
+	GITHUB_PROJECT_PAGE;
 	
 	public String getValue() {
 		

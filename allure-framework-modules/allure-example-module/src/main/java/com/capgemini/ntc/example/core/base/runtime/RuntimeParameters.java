@@ -4,8 +4,10 @@ import com.capgemini.ntc.test.core.base.runtime.RuntimeParametersI;
 import com.capgemini.ntc.test.core.logger.BFLogger;
 
 /**
- * This class stores various system properties These parameters are accessible while test case executes Example :
- * PARAM_3("param_3", "1410") IS: mvn test -Dparam_3=1525 -Dtest=MyTestClass
+ * This class stores various system properties
+ * These parameters are accessible while test case executes
+ * Example : PARAM_3("param_3", "1410")
+ * IS: mvn test -Dparam_3=1525 -Dtest=MyTestClass
  * 
  * @author LUSTEFAN
  */

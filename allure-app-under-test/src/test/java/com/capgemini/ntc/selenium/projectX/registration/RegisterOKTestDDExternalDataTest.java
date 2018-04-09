@@ -36,8 +36,8 @@ public class RegisterOKTestDDExternalDataTest extends BaseTest {
 	@Parameters(source = DataProviderExternalJsonFile.class)
 	public void registrationTest(FormDataContainer data) throws InterruptedException {
 		assertTrue("Site title: " + registrationPage.getActualPageTitle(),
-				registrationPage.getActualPageTitle()
-						.equals(PageTitlesEnum.REGISTRATION.toString()));
+						registrationPage.getActualPageTitle()
+										.equals(PageTitlesEnum.REGISTRATION.toString()));
 		
 		registrationPage.setFirstName(data.getFirstName());
 		registrationPage.setLastName(data.getLastName());

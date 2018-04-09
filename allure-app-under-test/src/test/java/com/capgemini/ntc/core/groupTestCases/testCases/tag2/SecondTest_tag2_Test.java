@@ -37,7 +37,7 @@ public class SecondTest_tag2_Test extends BaseTest {
 	public void QCID_StayOnResistryPage_Tag2_Second() throws InterruptedException {
 		
 		BFLogger.logInfo(
-				"[Step 2] As a standard user I click Submit button,  So that I will stay on Registry page");
+						"[Step 2] As a standard user I click Submit button,  So that I will stay on Registry page");
 		registryPage.clickSubmit();
 		assertThat(true, is(registryPage.isLoaded()));
 		
