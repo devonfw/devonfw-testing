@@ -1,2 +1,2 @@
 service variable,DEV,QA,PROD
-WWW_FONT_URL,http://demoqa.com/,https://pl.wiktionary.org/wiki/,http://orient-addicts.djamila.pl/
+WWW_FONT_URL,http://de-mucdevondepl01:8090/,https://pl.wiktionary.org/wiki/,http://orient-addicts.djamila.pl/
