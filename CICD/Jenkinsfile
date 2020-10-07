@@ -21,9 +21,8 @@ pipeline{
 					sh \"\"\"
 					cd ${env.workspace}
 					mvn -q -s ${SETTINGS_PATH} clean test -Dbrowser=firefox -DseleniumGrid=http://10.40.234.103:4444/wd/hub -Ddebug -Dgroups=MTS_GUI,MTS_API allure:report
-					cp ${env.workspace}/target/allure-results allure-results-run1
 					\"\"\"
-					allure includeProperties: false, jdk: '', report: "allure-report-run1", results: [[path: "allure-results-run1"]]
+					allure includeProperties: false, jdk: '', report: "allure-report-run1", results: [[path: "${env.workspace}/target/allure-results"]]
 				}
 			}
 		}
@@ -34,9 +33,8 @@ pipeline{
 					sh \"\"\"
 					cd ${env.workspace}
 					mvn -q -s ${SETTINGS_PATH} -Pcucumber clean verify -Dbrowser=firefox -DseleniumGrid=http://10.40.234.103:4444/wd/hub -Denv=QA -Dcucumber.class=RunMts* allure:report 
-					cp ${env.workspace}/target/allure-results allure-results-run2
 					\"\"\"
-					allure includeProperties: false, jdk: '', report: "allure-report-run2", results: [[path: "allure-results-run2"]]
+					allure includeProperties: false, jdk: '', report: "allure-report-run2", results: [[path: "${env.workspace}/target/allure-results"]]
 				}
 			}
 		}
