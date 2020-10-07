@@ -1,4 +1,4 @@
-def env.workspace = 'example'
+env.workspace = 'example'
 pipeline{
 	agent {docker {image 'mrchecker/mrchecker:v1.1.3'}}
 	stages{
