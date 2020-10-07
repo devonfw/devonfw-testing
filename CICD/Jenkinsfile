@@ -1,0 +1,38 @@
+def env.workspace = 'example'
+pipeline{
+	agent {docker {image 'mrchecker/mrchecker:v1.1.3'}}
+	stages{
+		stage('Build'){
+			steps{
+				echo "Building module ${env.module} and it's dependency"
+				sh \"\"\"
+				cd ${env.workspace}
+				mvn clean compile test-compile package install -DskipTests=true
+				\"\"\"
+				//bulid this module and its dependencies deploy them to local repo
+			}
+		}
+		stage('Test1'){
+			steps{
+				echo "Testing"
+				sh \"\"\"
+				cd ${env.workspace}
+				mvn -q -Pcucumber clean verify -Dbrowser=firefox -Denv=QA -Dcucumber.class=RunMts* allure:report 
+				cp ${env.workspace}/target/allure-results allure-results-run1
+				\"\"\"
+				allure includeProperties: false, jdk: '', report: "allure-report-run1", results: [[path: "allure-results-run1"]]
+			}
+		}
+		stage('Test2'){
+			steps{
+				echo "Testing"
+				sh \"\"\"
+				cd ${env.workspace}
+				mvn -q clean test -Dbrowser=firefox -Ddebug -Dgroups=MTS_GUI,MTS_API allure:report
+				cp ${env.workspace}/target/allure-results allure-results-run2
+				\"\"\"
+				allure includeProperties: false, jdk: '', report: "allure-report-run2", results: [[path: "allure-results-run2"]]
+			}
+		}
+	}
+}
