@@ -5,7 +5,7 @@ pipeline{
 		stage('Build'){
 			steps{
 				configFileProvider([configFile(fileId: 'deploy-maven-settings', targetLocation: 'settings.xml', variable: 'SETTINGS_PATH')]) {
-					echo "Building module ${env.module} and it's dependency"
+					echo "Building project"
 					sh \"\"\"
 					cd ${env.workspace}
 					mvn -q -s ${SETTINGS_PATH} clean compile test-compile package install -DskipTests=true
@@ -20,7 +20,7 @@ pipeline{
 					echo "Testing"
 					sh \"\"\"
 					cd ${env.workspace}
-					mvn -q -s ${SETTINGS_PATH} -Pcucumber clean verify -Dbrowser=firefox -Denv=QA -Dcucumber.class=RunMts* allure:report 
+					mvn -q -s ${SETTINGS_PATH} clean test -Dbrowser=firefox -Ddebug -Dgroups=MTS_GUI,MTS_API allure:report
 					cp ${env.workspace}/target/allure-results allure-results-run1
 					\"\"\"
 					allure includeProperties: false, jdk: '', report: "allure-report-run1", results: [[path: "allure-results-run1"]]
@@ -33,7 +33,7 @@ pipeline{
 					echo "Testing"
 					sh \"\"\"
 					cd ${env.workspace}
-					mvn -q -s ${SETTINGS_PATH} clean test -Dbrowser=firefox -Ddebug -Dgroups=MTS_GUI,MTS_API allure:report
+					mvn -q -s ${SETTINGS_PATH} -Pcucumber clean verify -Dbrowser=firefox -Denv=QA -Dcucumber.class=RunMts* allure:report 
 					cp ${env.workspace}/target/allure-results allure-results-run2
 					\"\"\"
 					allure includeProperties: false, jdk: '', report: "allure-report-run2", results: [[path: "allure-results-run2"]]
