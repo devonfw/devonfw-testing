@@ -50,4 +50,6 @@ multibranchPipelineJob("examples"){
         }
     }
 """
-//add config files to jenkins
+node{
+    jobDsl scriptText: script
+}
