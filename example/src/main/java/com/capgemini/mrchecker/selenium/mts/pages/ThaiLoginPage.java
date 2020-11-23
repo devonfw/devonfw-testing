@@ -13,7 +13,7 @@ import io.qameta.allure.Step;
 
 public class ThaiLoginPage extends MyThaiStarBasePage {
 	private static final List<String>	MESSAGE_LOGIN_SUCCESFUL		= Arrays.asList("Login successful", "Jestes zalogowany");
-	private static final List<String>	MESSAGE_LOGIN_UNSUCCESFUL	= Arrays.asList("Http failure response for http://localhost:8081/api/login: 401");
+	private static final List<String>	MESSAGE_LOGIN_UNSUCCESFUL	= Arrays.asList("Http failure response");
 	
 	private static final By	selectorUsernameInput	= By.name("username");
 	private static final By	selectorPasswordInput	= By.name("password");
@@ -60,17 +60,21 @@ public class ThaiLoginPage extends MyThaiStarBasePage {
 		
 	}
 	
-	@Step("Validate popup message {expectedMessage} ")
-	private void validatePopupMessage(List<String> expectedMessage) {
+	@Step("Validate popup message {expectedMessages} ")
+	private void validatePopupMessage(List<String> expectedMessages) {
 		getDriver().waitForElementVisible(selectorPopupMessage);
-		
+		makeScreenShot();
 		String popupText = getMessageText();
 		
-		StepLogger.step("Popup message is shown: " + popupText);
-		if (expectedMessage.contains(popupText)) {
-			fail("Popup message not shown. Expected: " + expectedMessage);
+		for (String oneMessage : expectedMessages) {
+			if (popupText.contains(oneMessage)) {
+				
+				StepLogger.step("Popup message is shown: " + popupText);
+				return;
+			}
 		}
-		makeScreenShot();
+		
+		fail("Popup message not shown. Expected: " + expectedMessages);
 		
 		getDriver().findElementDynamic(selectorPopupMessage)
 				.click();

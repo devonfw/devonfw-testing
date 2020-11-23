@@ -39,25 +39,25 @@ public class MyThaiStarLoginLogoutFakeTest extends BaseTest {
 	}
 	
 	@Description("Goal of this test case is to check if user **cannot login** with **invalid** credentials")
-	@TmsLink("LinkToJira-Issue")
+	@TmsLink("LinkToJira-ID")
 	@Test
 	public void Test_loginFake() {
 		
 		login();
 		checkIfLoged();
+		
 	}
 	
 	@Step("Try to login with invalid credentials")
 	private void login() {
 		myThaiStarHome.clickLogInButton();
-		loginPage.loginUser(fakeUser.getUsername(), fakeUser.getPassword());
+		loginPage.logininvalidUser(fakeUser.getUsername(), fakeUser.getPassword());
 	};
 	
 	@Step("Check if login fails")
 	private void checkIfLoged() {
 		assertThat("User " + fakeUser.getUsername() + " logged", myThaiStarHome.isUserLogged(fakeUser.getUsername()),
 				is(equalTo(false)));
-		
 		StepLogger.stepInfo("User not logged");
 		
 		MyThaiStarBasePage.makeScreenShot();

@@ -42,7 +42,7 @@ public class MyThaiStarLoginLogoutOKTest extends BaseTest {
 	}
 	
 	@Description("Goal of this test case is to check if user **logins** with **valid**  credentials")
-	@TmsLink("LinkToJira-Issue")
+	@TmsLink("LinkToJira-ID")
 	@DisplayName("Test_loginAndLogOut - abc")
 	
 	@ParameterizedTest

@@ -5,6 +5,7 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.fail;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -27,7 +28,7 @@ import io.qameta.allure.Story;
 @Epic("Selenium Tests")
 @Feature("My Thai Star")
 @Story("Order from Menu")
-
+@Disabled("Test needs adaptation")
 public class MyThaiStarOrderMenu extends BaseTest {
 	
 	private final ThaiHomePage	myThaiStarHome	= PageFactory.getPageInstance(ThaiHomePage.class);

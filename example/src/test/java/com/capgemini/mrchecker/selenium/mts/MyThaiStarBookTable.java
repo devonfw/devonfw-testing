@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.AggregateWith;
@@ -37,7 +38,7 @@ import io.qameta.allure.Story;
 @Epic("Selenium Tests")
 @Feature("My Thai Star")
 @Story("Book table")
-
+@Disabled("Test needs adaptation")
 public class MyThaiStarBookTable extends BaseTest {
 	
 	private final ThaiHomePage	myThaiStarHome	= PageFactory.getPageInstance(ThaiHomePage.class);
