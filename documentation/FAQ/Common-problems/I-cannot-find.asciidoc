@@ -1,7 +1,0 @@
-= I can't find the boilerplate module. Has it been removed?
-
-The _boilerplate_ module has been removed from the GitHub project on purpose.
-
-There were problems with naming and communication, not everybody was aware of the meaning of the word _boilerplate_.
-
-The name of the folder has been changed to _template_. It can be found in the GitHub project.

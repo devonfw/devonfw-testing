@@ -1,7 +1,0 @@
-= Is it possible to use Docker with MrChecker?
-
-MrChecker works seamlessly with Docker.
-
-A direct example of how to use it can be found in following JenkinsFile https://github.com/devonfw/devonfw-testing/blob/develop/mrchecker-app-under-test/pipelines/CI/Jenkinsfile_node.groovy
-
-Note that the structure of the folders can be changed. If that happens - search in repo for  _/pipeline/CI/Jenkinsfile_node.groovy_

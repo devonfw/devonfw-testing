@@ -1,7 +1,0 @@
-In order to learn more about MrChecker structure, start from Project Organisation section and then check out our fantastic tutorials:
-
-This tutorial will guide you through the series of test which perform basic actions on webpages using MrChecker. 
-
-Make sure you already have MrChecker Test Framework installed on your PC. How to install? 
-
-Your Product Under Test will be the following website: http://the-internet.herokuapp.com/ 

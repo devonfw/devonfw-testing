@@ -1,7 +1,0 @@
-= What is Page Object Model?
-
-image::images/image55.png[]
-
-Creating Selenium test cases can result in an unmaintainable project. One of the reasons is that too much duplicated code is used. Duplicated code could result from duplicated functionality leading to duplicated usage of locators. The main disadvantage of duplicated code is that the project is less maintainable. If a locator changes, you have to walk through the whole test code to adjust locators where necessary. By using the page object model we can make non-brittle test code and reduce or eliminate duplicate test code. In addition, it improves the readability and allows us to create interactive documentation. Last but not least, we can create tests with less keystroke. An implementation of the page object model can be achieved by separating the abstraction of the test object and the test scripts.
-
-image::images/image56.png[]

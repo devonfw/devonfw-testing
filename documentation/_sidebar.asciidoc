@@ -1,8 +1,0 @@
-== Who Is MrChecker?
-* link:home.asciidoc[Who is MrChecker]
-* link:benefits.asciidoc[Benefits for the project]
-* link:Test-Stages.asciidoc[Test Stages]
-
-== Whole documentation
-* link:https://devonfw.com/website/pages/docs/master-mrchecker.asciidoc_who-is-mrchecker.html[devonfw.com]
-

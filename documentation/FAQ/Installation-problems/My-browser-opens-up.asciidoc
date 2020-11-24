@@ -1,9 +1,0 @@
-= My browser opens up in German by default 
-
-*Problem:*
-
-I would like my browser to use the English language, but the default language for the browser is German. How can I change the settings?
-
-*Solution:*
-
-There is a Properties file installed together with MrCheker installation. It is possible to set the language in which a browser could be opened for testing purposes in _Properties > Selenium configuration_,.

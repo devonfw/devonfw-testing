@@ -1,9 +1,0 @@
-== BFLogger
-
-BFLogger is a default MrChecker logging tool. Use it to communicate important information from test execution. There are three basic logging methods: 
-
-* `logInfo(String message)` - used for test steps 
-* `logDebug(String message)` - used for non-official information, either during the test build process or in Page Object files 
-* `logError(String message)` - used to emphasize critical information 
-
-Logs will be visible in the console and in the log file under path: MrChecker_Test_Framework\workspace\project-folder\logs 
