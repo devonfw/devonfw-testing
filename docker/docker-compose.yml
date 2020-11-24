@@ -1,0 +1,72 @@
+version: "3.3"
+services:
+  jenkins:
+    image: custom_jenkins
+    restart: unless-stopped
+    ports:
+      - "8888:8080"
+      - "50000:50000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./jenkins:/var/jenkins_home
+    build:
+      context: .
+      dockerfile: jenkins_dockerfile
+  selenium-hub:
+    image: selenium/hub:3.141.59
+    restart: unless-stopped
+    container_name: selenium-hub
+    ports:
+        - "4444:4444"
+  selenium-firefox:
+    image: selenium/node-firefox:3.141.59
+    volumes:
+        - /dev/shm:/dev/shm
+    depends_on:
+        - selenium-hub
+    environment:
+        - HUB_HOST=selenium-hub
+        - HUB_PORT=4444
+    deploy:
+      replicas: 2
+  selenium-opera:
+    image: selenium/node-opera:3.141.59
+    volumes:
+        - /dev/shm:/dev/shm
+    depends_on:
+        - selenium-hub
+    environment:
+        - HUB_HOST=selenium-hub
+        - HUB_PORT=4444
+    deploy:
+      replicas: 0
+  selenium-chrome:
+    image: selenium/node-chrome:3.141.59
+    volumes:
+        - /dev/shm:/dev/shm
+    depends_on:
+        - selenium-hub
+    environment:
+        - HUB_HOST=selenium-hub
+        - HUB_PORT=4444
+    deploy:
+      replicas: 0
+  gitea-web:
+    image: gitea/gitea:1
+    volumes:
+      - ./data:/data
+    ports:
+      - "3000:3000"
+      - "22:22"
+    depends_on:
+      - gitea-db
+    restart: unless-stopped
+  gitea-db:
+    image: postgres:13-alpine
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=changeme
+      - POSTGRES_DB=gitea
+      - POSTGRES_USER=gitea
+    volumes:
+      - ./db/:/var/lib/mysql
