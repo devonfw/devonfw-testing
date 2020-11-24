@@ -1,8 +1,0 @@
-
-#2.  Compile and build
-mvn clean compile -DskipTests=true
-
-
-#7  Formatter
-mvn formatter:validate
-mvn formatter:format
