@@ -36,9 +36,10 @@ This branch features a template for small (less than 3-5 jobs) project.
 	* As project repository add address to your project (it might be necessary to replace `<host>` with `gitea-web`)
 	* Create new credentials and set them to you tech user
 	* Save
+1. Finishing actions
+	* Configure jenkins security
+	* Adjust Jenkinsfile
 
-[ ] ustawić bezpieczeństwo w jenkinsie
-[ ] dokonfigurować jenkinsfile
 ### Hardware resources
 Below I just wanted to show you how I calculated the values, feel free to mix match and scale it.
 #### Jenkins
