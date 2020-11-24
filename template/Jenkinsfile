@@ -2,7 +2,8 @@ pipeline {
 	parameters{
 		string(defaultValue:"127.0.0.1:4444/wd/hub",description:'URL to SELENIUM GRID',name: 'SELENIUM_GRID_URL')
 		string(defaultValue:"MTS_GUI,MTS_API",description:'Groups to be run in selenium test stage',name: 'SELENIUM_GROUPS')
-		
+		parameters { choice(name: 'BROWSER', choices: ['firefox', 'chrome', 'opera'], description: 'Browser to run test with',defaultValue:"firefox") }
+
 	}
 	agent {
 		node { label "master" }
@@ -24,7 +25,7 @@ pipeline {
 				stage('Selenium'){
 					steps{
 						script{
-							sh "mvn -q test -Dbrowser=firefox -DseleniumGrid=${SELENIUM_GRID_URL} -Dgroups=${SELENIUM_GROUPS}"
+							sh "mvn -q test -Dbrowser=${BROWSER} -DseleniumGrid=${SELENIUM_GRID_URL} -Dgroups=${SELENIUM_GROUPS}"
 						}
 					}
 				}
