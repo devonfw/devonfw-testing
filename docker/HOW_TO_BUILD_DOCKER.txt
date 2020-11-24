@@ -1,4 +1,0 @@
-cd ..
-docker build -t lucst/devonfwe2e:v2-0.0 -f docker/dockerfile .
-docker login docker.com
-docker push -t lucst/devonfwe2e:v2-0.0
