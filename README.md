@@ -4,11 +4,12 @@ This branch features a template for small (less than 3-5 jobs) project.
 
 ## Setup manual
 1. Prerequisites
-	* Aquire linux machine with 6vCPU and 8GB of RAM (rough estimates - but changing this values will affect your performance more on it in next section). 320GB of HDD should be enought.
+	* Aquire linux machine with 6vCPU and 8GB of RAM (rough estimates - but changing this values will affect your performance, more on it in next section). 320GB of HDD should be enought.
 	* Install docker on it.
 	* Setup docker-compose.
 1. Config
 	* Put a docker folder from this project to your machine.
+	* Go to `docker/docker-compose.yml`
 	* Adjust replicas numbers for selenium agents.
 	* Setup PostgreSQL password via `POSTGRES_PASSWORD` variable.
 	* Go there and run `docker-compose up` now the magic happens.
