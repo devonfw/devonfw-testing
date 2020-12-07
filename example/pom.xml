@@ -114,6 +114,12 @@
         <!-- Static analyze settings -->
         <formatter-maven-plugin.version>2.7.1</formatter-maven-plugin.version>
         <style_format.directory>${pom.basedir}/../resources/style_format</style_format.directory>
+        
+        <!-- variables -->
+        <timestamp>${maven.build.timestamp}</timestamp>
+		<maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
+		<zipfilename>${project.artifactId}-${timestamp}</zipfilename>
+		<testrunnerPointer>com.capgemini.tests.runners.Testrunner</testrunnerPointer>
 
     </properties>
 
@@ -327,6 +333,84 @@
     </build>
 
     <profiles>
+    <!-- CREATE ZIP PACKAGE -->
+		<profile>
+			<id>zip_package</id>
+			<!-- mvn clean package -DskipTests -P zip_package -->
+			<build>
+				<plugins>
+				 <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>3.8.1</version>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/cucumber/*.java</exclude>
+                            </excludes>
+                            <compilerArgument>-Xlint:deprecation</compilerArgument>
+                            <showWarnings>false</showWarnings>
+                            <showDeprecation>true</showDeprecation>
+                            <source>${java.compiler.version}</source>
+                            <target>${java.compiler.version}</target>
+                            <encoding>UTF-8</encoding>
+                            <testSource>${java.compiler.version}</testSource>
+                            <testTarget>${java.compiler.version}</testTarget>
+                        </configuration>
+                    </plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-jar-plugin</artifactId>
+						<version>3.2.0</version>
+						<configuration>
+						  <source>${java.compiler.version}</source>
+                            <target>${java.compiler.version}</target>
+							<finalName>${zipfilename}</finalName>
+						</configuration>
+						<executions>
+							<execution>
+								<goals>
+									<goal>test-jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-shade-plugin</artifactId>
+						<version>3.2.4</version>
+						<configuration>
+							<createDependencyReducedPom>false</createDependencyReducedPom>
+						</configuration>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>shade</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-assembly-plugin</artifactId>
+						<version>2.5.3</version>
+						<configuration>
+							<finalName>${zipfilename}</finalName>
+							<appendAssemblyId>false</appendAssemblyId>
+							<descriptor>src/resources/package_zip/distribution.xml</descriptor>
+						</configuration>
+						<executions>
+							<execution>
+								<id>create-archive</id>
+								<phase>package</phase>
+								<goals>
+									<goal>single</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
         <!-- RUN CLASSIC JUNIT TESTS -->
         <profile>
             <id>default</id>
