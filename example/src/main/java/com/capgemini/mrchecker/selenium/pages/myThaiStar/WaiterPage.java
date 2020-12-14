@@ -8,6 +8,8 @@ import com.capgemini.mrchecker.selenium.pages.environment.PageSubURLsMyThaiStar;
 import com.capgemini.mrchecker.selenium.pages.environment.PageTitlesEnumMyThaiStar;
 import com.capgemini.mrchecker.test.core.logger.BFLogger;
 
+import io.qameta.allure.Step;
+
 public class WaiterPage extends BasePage {
 	
 	private static final By selectorOrdersTab = By.xpath("//a[@routerlink='/orders']");
@@ -35,6 +37,7 @@ public class WaiterPage extends BasePage {
 		return PageTitlesEnumMyThaiStar.MAIN_PAGE.toString();
 	}
 	
+	@Step("Click reservation tab")
 	public ReservationsPage clickReservationsTab() {
 		getDriver().findElementDynamic(selectorReservationsTab)
 				.click();

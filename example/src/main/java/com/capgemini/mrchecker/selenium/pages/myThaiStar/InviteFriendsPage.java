@@ -15,6 +15,8 @@ import com.capgemini.mrchecker.selenium.pages.environment.PageSubURLsMyThaiStar;
 import com.capgemini.mrchecker.selenium.pages.environment.PageTitlesEnumMyThaiStar;
 import com.capgemini.mrchecker.test.core.logger.BFLogger;
 
+import io.qameta.allure.Step;
+
 public class InviteFriendsPage extends BasePage {
 	
 	private static final By selectorDateInput = By.cssSelector("input[formcontrolname='bookingDate']");
@@ -53,6 +55,7 @@ public class InviteFriendsPage extends BasePage {
 		return PageTitlesEnumMyThaiStar.MAIN_PAGE.toString();
 	}
 	
+	@Step("Fill input invitation email with: {email}")
 	public void enterInvitationEmailInput(String email) {
 		
 		getDriver().findElementDynamic(selectorInvitationEmailInput)
@@ -60,6 +63,7 @@ public class InviteFriendsPage extends BasePage {
 		
 	}
 	
+	@Step("Click accept terms chackbox")
 	public void clickAcceptTermsCheckboxInvitation() {
 		WebElement checkbox = getDriver().findElementDynamic(selectorAcceptTermsCheckbox);
 		WebElement square = checkbox.findElement(By.className("mat-checkbox-inner-container"));
@@ -67,22 +71,26 @@ public class InviteFriendsPage extends BasePage {
 		js.executeScript("arguments[0].click()", square);
 	}
 	
+	@Step("Click invite friends button")
 	public void clickInviteFriendsButton() {
 		getDriver().waitUntilElementIsClickable(selectorInviteFriendsButton);
 		getDriver().findElementDynamic(selectorInviteFriendsButton)
 				.click();
 	}
 	
+	@Step("Fill date and time input with: {date}")
 	public void enterTimeAndDateInputInvitation(String date) {
 		getDriver().findElementDynamic(selectorDateInput)
 				.sendKeys(date);
 	}
 	
+	@Step("Fill name input with: {name}")
 	public void enterNameInputInvitation(String name) {
 		getDriver().findElementDynamic(selectorNameInput)
 				.sendKeys(name);
 	}
 	
+	@Step("Fill email input with: {email}")
 	public void enterEmailInputInvitation(String email) {
 		getDriver().findElementDynamic(selectorEmailInput)
 				.sendKeys(email);

@@ -6,12 +6,15 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import com.capgemini.mrchecker.common.allure.utils.StepLogger;
 import com.capgemini.mrchecker.common.mts.utils.Utils;
+import com.capgemini.mrchecker.core.groupTestCases.testSuites.tags.MTS;
 import com.capgemini.mrchecker.selenium.pages.myThaiStar.BookTablePage;
 import com.capgemini.mrchecker.selenium.pages.myThaiStar.ConfirmInvitationPage;
 import com.capgemini.mrchecker.selenium.pages.myThaiStar.InviteFriendsPage;
 import com.capgemini.mrchecker.test.core.BaseTest;
 
+@MTS
 public class InviteFriendsTest extends BaseTest {
 	
 	private static BookTablePage	bookTablePage	= new BookTablePage();
@@ -19,7 +22,7 @@ public class InviteFriendsTest extends BaseTest {
 	
 	@BeforeAll
 	public static void setUpBeforeClass() {
-		bookTablePage.load();
+		// bookTablePage.load();
 	}
 	
 	@AfterAll
@@ -69,5 +72,7 @@ public class InviteFriendsTest extends BaseTest {
 		confirmInvitationPage.clickConfirmBookingButton();
 		
 		assertTrue("Test failed: Friends not invited", inviteFriendsPage.isConfirmationDialogDisplayed());
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Test passed: Friends invited");
 	}
 }

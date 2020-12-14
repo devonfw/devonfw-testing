@@ -7,6 +7,8 @@ import com.capgemini.mrchecker.selenium.core.BasePage;
 import com.capgemini.mrchecker.selenium.pages.environment.PageTitlesEnumMyThaiStar;
 import com.capgemini.mrchecker.test.core.logger.BFLogger;
 
+import io.qameta.allure.Step;
+
 public class ConfirmBookPage extends BasePage {
 	private static final By selectorConfirmationWindow = By.className("mat-dialog-container");
 	
@@ -30,11 +32,13 @@ public class ConfirmBookPage extends BasePage {
 		return PageTitlesEnumMyThaiStar.MAIN_PAGE.toString();
 	}
 	
+	@Step("Click confirm booking button")
 	public void clickConfirmBookingButton() {
 		getDriver().findElementDynamic(selectorSendButton)
 				.click();
 	}
 	
+	@Step("Click cancel booking button")
 	public void clickCancelBookingButton() {
 		getDriver().findElementDynamic(selectorCancelButton)
 				.click();

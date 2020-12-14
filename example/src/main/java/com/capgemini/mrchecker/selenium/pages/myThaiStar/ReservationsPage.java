@@ -11,7 +11,6 @@ import org.openqa.selenium.WebElement;
 import com.capgemini.mrchecker.common.mts.utils.Utils;
 import com.capgemini.mrchecker.selenium.core.BasePage;
 import com.capgemini.mrchecker.selenium.core.exceptions.BFElementNotFoundException;
-import com.capgemini.mrchecker.selenium.jsoupHelper.JsoupHelper;
 import com.capgemini.mrchecker.selenium.pages.environment.GetEnvironmentParam;
 import com.capgemini.mrchecker.selenium.pages.environment.PageSubURLsMyThaiStar;
 import com.capgemini.mrchecker.selenium.pages.environment.PageTitlesEnumMyThaiStar;
@@ -19,7 +18,7 @@ import com.capgemini.mrchecker.test.core.logger.BFLogger;
 
 public class ReservationsPage extends BasePage {
 	
-	private static final By selectorReservationsTable = By.cssSelector("tbody[class='td-data-table-body'] > tr");
+	private static final By selectorReservationsTable = By.cssSelector("tbody > tr:nth-of-type(1)");
 	
 	private static final By selectorReservationsTableContent = By.cssSelector("div > span");
 	
@@ -71,24 +70,23 @@ public class ReservationsPage extends BasePage {
 		String date, id, email;
 		
 		getDriver().waitForElementVisible(selectorReservationsTable);
-		WebElement reservationsTable = getDriver().findElementDynamic(selectorReservationsTable);
-		List<String> reservations = JsoupHelper.findTexts(reservationsTable,
-				selectorReservationsTableContent);
+		WebElement reservationsTableFirstItem = getDriver().findElementDynamic(selectorReservationsTable);
 		
-		for (int i = 0; i < reservations.size(); i += 3) {
-			date = reservations.get(i);
-			BFLogger.logDebug(i + " Date: " + date);
-			email = reservations.get(i + 1);
-			BFLogger.logDebug(i + " Email: " + email);
-			id = reservations.get(i + 2);
-			BFLogger.logDebug(i + " Id: " + id);
-			
-			try {
-				date = Utils.changeDateFormat(date, "MMM dd, yyyy hh:mm a", "MM/dd/yyyy hh:mm a");
-			} catch (ParseException e) {
-				System.err.println("Date not formated properly at getReservationsShownByDate in ReservationsPage");
-				e.printStackTrace();
-			}
+		date = reservationsTableFirstItem.findElement(By.cssSelector("td:nth-of-type(1)"))
+				.getText();
+		BFLogger.logDebug(" Date: " + date);
+		email = reservationsTableFirstItem.findElement(By.cssSelector("td:nth-of-type(2)"))
+				.getText();
+		BFLogger.logDebug(" Email: " + email);
+		id = reservationsTableFirstItem.findElement(By.cssSelector("td:nth-of-type(3)"))
+				.getText();
+		BFLogger.logDebug(" Id: " + id);
+		
+		try {
+			date = Utils.changeDateFormat(date, "MMM dd, yyyy hh:mm a", "MM/dd/yyyy hh:mm a");
+		} catch (ParseException e) {
+			System.err.println("Date not formated properly at getReservationsShownByDate in ReservationsPage");
+			e.printStackTrace();
 			
 			if (email.equals(email_arg) && date.equals(date_arg)) {
 				reservationsByDate.add(id);
@@ -159,25 +157,27 @@ public class ReservationsPage extends BasePage {
 				.click();
 		
 		getDriver().waitForElementVisible(selectorReservationsTable);
-		WebElement reservationsTable = getDriver().findElementDynamic(selectorReservationsTable);
-		List<String> reservations = JsoupHelper.findTexts(reservationsTable, selectorReservationsTableContent);
 		
-		for (int i = 0; i < reservations.size(); i += 3) {
-			date = reservations.get(i);
-			
-			email = reservations.get(i + 1);
-			
-			id = reservations.get(i + 2);
-			
-			try {
-				date = Utils.changeDateFormat(date, "MMM dd, yyyy hh:mm a", "MM/dd/yyyy hh:mm a");
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-			
-			if (email.equals(email_arg) && date.equals(date_arg)) {
-				return id;
-			}
+		WebElement reservationsTableFirstItem = getDriver().findElementDynamic(selectorReservationsTable);
+		
+		date = reservationsTableFirstItem.findElement(By.cssSelector("td:nth-of-type(1)"))
+				.getText();
+		BFLogger.logDebug(" Date: " + date);
+		email = reservationsTableFirstItem.findElement(By.cssSelector("td:nth-of-type(2)"))
+				.getText();
+		BFLogger.logDebug(" Email: " + email);
+		id = reservationsTableFirstItem.findElement(By.cssSelector("td:nth-of-type(3)"))
+				.getText();
+		BFLogger.logDebug(" Id: " + id);
+		
+		try {
+			date = Utils.changeDateFormat(date, "MMM dd, yyyy hh:mm a", "MM/dd/yyyy hh:mm a");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		if (email.equals(email_arg) && date.equals(date_arg)) {
+			return id;
 		}
 		return null;
 	}

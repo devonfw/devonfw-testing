@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import com.capgemini.mrchecker.common.allure.utils.StepLogger;
 import com.capgemini.mrchecker.common.mts.utils.Utils;
 import com.capgemini.mrchecker.core.groupTestCases.testSuites.tags.MTS;
 import com.capgemini.mrchecker.selenium.pages.myThaiStar.BookTablePage;
@@ -60,6 +61,9 @@ public class BookTableTest extends BaseTest {
 		confirmBookPage.clickConfirmBookingButton();
 		
 		assertTrue("Table not booked after entering proper data", bookTablePage.isConfirmationDialogDisplayed());
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Table booked after entering proper data");
+		
 	}
 	
 	/* Test Case 2 */
@@ -75,6 +79,8 @@ public class BookTableTest extends BaseTest {
 		bookTablePage.enterBookingData(date, clientName, email, Integer.toString(guestsNumber));
 		
 		assertFalse("Book table button clickable after entering wrong date", bookTablePage.isBookTableButtonClickable());
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Book table button not clickable after entering wrong date");
 	}
 	
 	/* Test Case 3 */
@@ -95,6 +101,9 @@ public class BookTableTest extends BaseTest {
 		bookTablePage.enterBookingData(date, clientName, email, Integer.toString(guestsNumber));
 		
 		assertFalse("Book table button clickable after entering wrong hour", bookTablePage.isBookTableButtonClickable());
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Book table button not clickable after entering wrong hour");
+		
 	}
 	
 	/* Test Case 4 */
@@ -113,6 +122,8 @@ public class BookTableTest extends BaseTest {
 		bookTablePage.enterBookingData(date, clientName, email, Integer.toString(guestsNumber));
 		
 		assertFalse("Book table button clickable after entering wrong hour", bookTablePage.isBookTableButtonClickable());
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Book table button not clickable after entering wrong hour");
 	}
 	
 	/* Test Case 5 */
@@ -133,6 +144,8 @@ public class BookTableTest extends BaseTest {
 		bookTablePage.enterBookingData(date, clientName, email, Integer.toString(guestsNumber));
 		
 		assertFalse("Book table button clickable after entering wrong hour", bookTablePage.isBookTableButtonClickable());
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Book table button not clickable after entering wrong hour");
 	}
 	
 	/* Test Case 6 */
@@ -151,6 +164,8 @@ public class BookTableTest extends BaseTest {
 		bookTablePage.enterBookingData(date, clientName, email, Integer.toString(guestsNumber));
 		
 		assertFalse("Book table button clickable after entering wrong hour", bookTablePage.isBookTableButtonClickable());
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Book table button not clickable after entering wrong hour");
 	}
 	
 	/* Test Case 7 */
@@ -169,6 +184,8 @@ public class BookTableTest extends BaseTest {
 		bookTablePage.enterBookingData(date, emptyName, email, Integer.toString(guestsNumber));
 		
 		assertFalse("Book table button clickable after entering empty name", bookTablePage.isBookTableButtonClickable());
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Book table button not clickable after entering empty name");
 	}
 	
 	/* Test Case 8 */
@@ -184,6 +201,8 @@ public class BookTableTest extends BaseTest {
 		bookTablePage.enterBookingData(date, clientName, email, Integer.toString(guestsNumber));
 		
 		assertFalse("Book table button clickable after entering wrong email", bookTablePage.isBookTableButtonClickable());
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Book table button not clickable after entering wrong email");
 	}
 	
 	/* Test Case 9 */
@@ -199,6 +218,8 @@ public class BookTableTest extends BaseTest {
 		bookTablePage.enterBookingData(date, clientName, email, Integer.toString(guestsNumber));
 		
 		assertFalse("Book table button clickable after entering zero guests amount", bookTablePage.isBookTableButtonClickable());
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Book table button not clickable after entering zero guests amount");
 	}
 	
 	@Test
@@ -213,6 +234,8 @@ public class BookTableTest extends BaseTest {
 		bookTablePage.enterBookingData(date, clientName, email, Integer.toString(guestsNumber));
 		
 		assertFalse("Book table button clickable after entering negative guests amount", bookTablePage.isBookTableButtonClickable());
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Book table button not clickable after entering negative guests amount");
 	}
 	
 	/* Test Case 10 */
@@ -228,6 +251,8 @@ public class BookTableTest extends BaseTest {
 		bookTablePage.enterBookingData(date, clientName, email, Integer.toString(guestsNumber));
 		
 		assertFalse("Book table button clickable after entering too big guests amount", bookTablePage.isBookTableButtonClickable());
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Book table button not clickable after entering too big guests amount");
 	}
 	
 	/* Test Case 11 */
@@ -244,6 +269,8 @@ public class BookTableTest extends BaseTest {
 		bookTablePage.enterBookingData(date, clientName, email, guestsNumber);
 		
 		assertFalse("Book table button clickable after entering non integer guests amount", bookTablePage.isBookTableButtonClickable());
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Book table button not clickable after entering non integer guests amount");
 	}
 	
 	/* Test Case 12 */
@@ -262,6 +289,8 @@ public class BookTableTest extends BaseTest {
 		bookTablePage.enterGuestsNumberInput(Integer.toString(guestsNumber));
 		
 		assertFalse("Book table button clickable when accept terms checkbox unchecked", bookTablePage.isBookTableButtonClickable());
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Book table button not clickable when accept terms checkbox unchecked");
 	}
 	
 }

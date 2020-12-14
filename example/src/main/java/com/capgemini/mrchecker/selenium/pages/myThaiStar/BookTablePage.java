@@ -8,11 +8,14 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import com.capgemini.mrchecker.common.allure.utils.StepLogger;
 import com.capgemini.mrchecker.selenium.core.BasePage;
 import com.capgemini.mrchecker.selenium.core.exceptions.BFElementNotFoundException;
 import com.capgemini.mrchecker.selenium.pages.environment.GetEnvironmentParam;
 import com.capgemini.mrchecker.selenium.pages.environment.PageSubURLsMyThaiStar;
 import com.capgemini.mrchecker.selenium.pages.environment.PageTitlesEnumMyThaiStar;
+
+import io.qameta.allure.Step;
 
 public class BookTablePage extends BasePage {
 	private static final By selectorDateInput = By.cssSelector("input[formcontrolname='bookingDate']");
@@ -53,27 +56,32 @@ public class BookTablePage extends BasePage {
 		getDriver().waitForElementVisible(selectorAcceptTermsCheckbox);
 	}
 	
+	@Step("Fill date input with: {date}")
 	public void enterTimeAndDateInputBooking(String date) {
 		getDriver().waitForElement(selectorDateInput);
 		getDriver().findElementDynamic(selectorDateInput)
 				.sendKeys(date);
 	}
 	
+	@Step("Fill name input with: {name}")
 	public void enterNameInputBooking(String name) {
 		getDriver().findElementDynamic(selectorNameInput)
 				.sendKeys(name);
 	}
 	
+	@Step("Fill email input with: {email}")
 	public void enterEmailInputBooking(String email) {
 		getDriver().findElementDynamic(selectorEmailInput)
 				.sendKeys(email);
 	}
 	
+	@Step("Fill table guest input with: {amountOfGuests}")
 	public void enterGuestsNumberInput(String amountOfGuests) {
 		getDriver().findElementDynamic(selectorGuestsNumberInput)
 				.sendKeys(amountOfGuests);
 	}
 	
+	@Step("Click accept terms chackbox")
 	public void clickAcceptTermsCheckboxBooking() {
 		WebElement checkbox = getDriver().findElementDynamic(selectorAcceptTermsCheckbox);
 		WebElement square = checkbox.findElement(By.className("mat-checkbox-inner-container"));
@@ -81,6 +89,7 @@ public class BookTablePage extends BasePage {
 		js.executeScript("arguments[0].click()", square);
 	}
 	
+	@Step("Click book table button")
 	public void clickBookTableButton() {
 		getDriver().waitUntilElementIsClickable(selectorBookTableButton);
 		getDriver().findElementDynamic(selectorBookTableButton)
@@ -97,15 +106,17 @@ public class BookTablePage extends BasePage {
 				.isDisplayed();
 	}
 	
+	@Step("Book a table")
 	public ConfirmBookPage enterBookingDataAndBookTable(String date, String name, String email, String guests) {
 		
 		enterBookingData(date, name, email, guests);
-		
+		StepLogger.makeScreenShot();
 		clickBookTableButton();
 		
 		return new ConfirmBookPage();
 	}
 	
+	@Step("Enter booking data")
 	public void enterBookingData(String date, String name, String email, String guests) {
 		
 		enterTimeAndDateInputBooking(date);

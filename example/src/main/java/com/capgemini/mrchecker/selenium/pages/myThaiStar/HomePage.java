@@ -10,6 +10,8 @@ import com.capgemini.mrchecker.selenium.pages.environment.GetEnvironmentParam;
 import com.capgemini.mrchecker.selenium.pages.environment.PageSubURLsMyThaiStar;
 import com.capgemini.mrchecker.selenium.pages.environment.PageTitlesEnumMyThaiStar;
 
+import io.qameta.allure.Step;
+
 public class HomePage extends BasePage {
 	
 	private static final By selectorLoginButton = By.name("login");
@@ -40,6 +42,7 @@ public class HomePage extends BasePage {
 		return PageTitlesEnumMyThaiStar.MAIN_PAGE.toString();
 	}
 	
+	@Step("Click login button")
 	public LoginPage clickLogInButton() {
 		getDriver().findElementDynamic(selectorLoginButton)
 				.click();
@@ -47,6 +50,7 @@ public class HomePage extends BasePage {
 		return new LoginPage();
 	}
 	
+	@Step("Click logout button")
 	public void clickLogOutButton() {
 		getDriver().findElementDynamic(selectorAccountButton)
 				.click();
@@ -70,6 +74,7 @@ public class HomePage extends BasePage {
 		return accountLabel != null ? accountLabel.getText() : StringUtils.EMPTY;
 	}
 	
+	@Step("Click book table tab")
 	public BookTablePage clickBookTableTab() {
 		getDriver().findElementDynamic(selectorBookTableTab)
 				.click();

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import com.capgemini.mrchecker.common.allure.utils.StepLogger;
 import com.capgemini.mrchecker.common.mts.utils.Utils;
 import com.capgemini.mrchecker.core.groupTestCases.testSuites.tags.MTS;
 import com.capgemini.mrchecker.selenium.pages.myThaiStar.BookTablePage;
@@ -54,6 +55,8 @@ public class MakeOrderTest extends BaseTest {
 		menuPage.makeAnOrder(prepareToOrder());
 		
 		assertTrue("Test failed: Order not made", menuPage.checkConfirmationDialog());
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Test passed: Order made");
 	}
 	
 	@Test
@@ -62,6 +65,8 @@ public class MakeOrderTest extends BaseTest {
 		menuPage.makeBiggerOrder(prepareToOrder());
 		
 		assertTrue("Test failed: Order not made", menuPage.checkConfirmationDialog());
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Test passed: Order made");
 	}
 	
 	private void login(String username, String password) {
@@ -69,6 +74,8 @@ public class MakeOrderTest extends BaseTest {
 		loginPage.enterCredentialsAndLogin(username, password);
 		assertTrue("User " + username + " not logged",
 				homePage.isUserLogged(username));
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("User " + username + " logged");
 	}
 	
 	private String prepareToOrder() {
@@ -98,6 +105,8 @@ public class MakeOrderTest extends BaseTest {
 		menuPage.load();
 		
 		assertTrue("Empty booking id", id != null);
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Booking id: " + id);
 		
 		return id;
 	}

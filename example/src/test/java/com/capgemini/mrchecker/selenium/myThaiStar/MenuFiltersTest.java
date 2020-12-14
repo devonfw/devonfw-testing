@@ -10,6 +10,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import com.capgemini.mrchecker.common.allure.utils.StepLogger;
 import com.capgemini.mrchecker.core.groupTestCases.testSuites.tags.MTS;
 import com.capgemini.mrchecker.selenium.pages.myThaiStar.MenuPage;
 import com.capgemini.mrchecker.test.core.BaseTest;
@@ -44,31 +45,35 @@ public class MenuFiltersTest extends BaseTest {
 	public void Test_Search() {
 		menuPage.enterSearchInput("garlic");
 		menuPage.clickApplyFiltersButton();
-		
 		assertTrue("Test failed: Results incorrect", !menuPage.findElementInContainer("garlic"));
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Test passed: Results correct, item contains garlic");
 	}
 	
 	@Test
 	public void Test_Sort() {
 		menuPage.selectSortDropdown(0);
 		menuPage.clickApplyFiltersButton();
-		
-		assertTrue("Test failed: Results incorrect", menuPage.findElementInContainer("THAI THIGHS FISH/PRAWNS"));
+		assertTrue("Test failed: Results incorrect", menuPage.findElementInContainer("THAI GREEN CHICKEN CURRY"));
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Test passed: Results correct, lowest price is THAI GREEN CHICKEN CURRY");
 	}
 	
 	@Test
 	public void Test_Checkboxes() {
 		menuPage.setRiceCheckbox();
 		menuPage.clickApplyFiltersButton();
-		
 		assertTrue("Test failed: Results incorrect", menuPage.findElementInContainer("THAI SPICY BASIL FRIED RICE"));
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Test passed: Results correct, result contains rice: THAI SPICY BASIL FRIED RICE");
 	}
 	
 	@Test
 	public void Test_Sliders() throws AWTException {
 		menuPage.slide(4);
 		menuPage.clickApplyFiltersButton();
-		
 		assertTrue("Test failed: Results incorrect", menuPage.findElementInContainer("5XggQv/9k=\");"));
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Test passed: Results correct");
 	}
 }

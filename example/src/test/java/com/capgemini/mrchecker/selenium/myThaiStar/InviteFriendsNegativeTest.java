@@ -7,6 +7,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import com.capgemini.mrchecker.common.allure.utils.StepLogger;
 import com.capgemini.mrchecker.common.mts.utils.Utils;
 import com.capgemini.mrchecker.core.groupTestCases.testSuites.tags.MTS;
 import com.capgemini.mrchecker.selenium.pages.myThaiStar.BookTablePage;
@@ -21,7 +22,7 @@ public class InviteFriendsNegativeTest extends BaseTest {
 	
 	@BeforeAll
 	public static void setUpBeforeClass() {
-		bookTablePage.load();
+		// bookTablePage.load();
 	}
 	
 	@AfterAll
@@ -67,6 +68,8 @@ public class InviteFriendsNegativeTest extends BaseTest {
 		inviteFriendsPage.clickAcceptTermsCheckboxInvitation();
 		
 		assertFalse("Test failed: Friends invited", inviteFriendsPage.isInviteFriendsButtonClickable());
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Test passed: Friends not invited");
 	}
 	
 	@Test
@@ -91,6 +94,8 @@ public class InviteFriendsNegativeTest extends BaseTest {
 		inviteFriendsPage.clickAcceptTermsCheckboxInvitation();
 		
 		assertFalse("Test failed: Friends invited", inviteFriendsPage.isInviteFriendsButtonClickable());
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Test passed: Friends not invited");
 	}
 	
 	@Test
@@ -115,6 +120,8 @@ public class InviteFriendsNegativeTest extends BaseTest {
 		inviteFriendsPage.clickAcceptTermsCheckboxInvitation();
 		
 		assertFalse("Test failed: Friends invited", inviteFriendsPage.isInviteFriendsButtonClickable());
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Test passed: Friends not invited");
 	}
 	
 	@Test
@@ -132,6 +139,8 @@ public class InviteFriendsNegativeTest extends BaseTest {
 		inviteFriendsPage.clickAcceptTermsCheckboxInvitation();
 		
 		assertFalse("Test failed: Friends invited", inviteFriendsPage.isInviteFriendsButtonClickable());
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Test passed: Friends not invited");
 	}
 	
 	@Test
@@ -151,5 +160,7 @@ public class InviteFriendsNegativeTest extends BaseTest {
 		inviteFriendsPage.clickAcceptTermsCheckboxInvitation();
 		
 		assertFalse("Test failed: Friends invited", inviteFriendsPage.isInviteFriendsButtonClickable());
+		StepLogger.makeScreenShot();
+		StepLogger.stepInfo("Test passed: Friends not invited");
 	}
 }
