@@ -12,6 +12,10 @@ services:
     build:
       context: .
       dockerfile: jenkins_dockerfile
+  jenkins_agents_1:
+    image: jenkins/jnlp-agent-maven:jdk11
+    command: -url http://jenkins:8080 <secret> <name>
+    restart: always
   selenium-hub:
     image: selenium/hub:3.141.59
     restart: unless-stopped

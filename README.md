@@ -9,15 +9,19 @@ This branch features a template for small (less than 3-5 jobs) project.
 	* Setup docker-compose.
 1. Config
 	* Put a docker folder from this project to your machine.
-	* Go to `docker/docker-compose.yml`
+	* Go to `docker/docker-compose.yml` - make sure you are checked out on a branch 'small_project_template'
 	* Adjust replicas numbers for selenium agents.
+		* in `docker/docker-compose.yml` there are services named in form of `selenium-\<browser name\>` each of them has replicas parameter
+		* you should adjust it to match your need
+		* e.g. If your requirement is to test on firefox you will need only firefox slots so set replica parameter for `selenium-firefox` to 4 and for every other `selenium-\<browser name\>` to 0
+		* e.g. If your requirement is to test on firefox, opera, and chrome you want to set replicas parameter for 2 for all this browsers so you can decide from MrChecker framework which slot to take.
 	* Setup PostgreSQL password via `POSTGRES_PASSWORD` variable.
 	* Go there and run `docker-compose up` now the magic happens.
 1. Jenkins initial setup
 	* Wait until jenkins image is downloaded and built, wait for selenium and gitea images.
 	* Go to `./jenkins/secrets/initialAdminOassword`
-	* Now when the stack is up and runing, from your PC go to `host:8888` which is default jenkins port and fill the form in with the value of of initial admin pass *uired in the previous step.* Select to install sugested plugins
-	* Connect agents
+	* Now when the stack is up and runing, from your PC go to `host:8888` which is default jenkins port and fill the form in with the value of of initial admin pass aquired in the previous step.
+	* Select to install sugested plugins
 1. Gitea initial setup
 	* From your PC access `host:3000` which is default Gitea port.
 	* Select register. You should be prompted with `Initial Configuration` form.
@@ -38,8 +42,17 @@ This branch features a template for small (less than 3-5 jobs) project.
 	* Create new credentials and set them to you tech user
 	* Save
 1. Finishing actions
-	* Configure jenkins security
+	* Configure jenkins security <https://www.jenkins.io/doc/book/managing/security/>
 	* Adjust Jenkinsfile
+	* Connect agents
+		* Go to jenkins and on the left pane click on the `build executor status`
+		* Then click on the `New Node`
+		* Assign it a name and check `Permament Agent`
+		* Set remote root directory to `/var/jenkins`
+		* Then click on the node name you've created
+		* Copy the secret and put it in `docker/docker-compose.yml` with the name
+		* Restart docker compose `docker-compose down` and `docker-compose up`. Wait some time after jenkins is avaiable. The agents should connect to it automatically.
+		* If you need more space either you can expand numbers of executors in Node config tab or copy paste the chunk with agent service in docker compose and create new one with distinctive name and secret(jenkins would not allow you to connect more than one agent with same secret and name)
 
 ### Hardware resources
 Below I just wanted to show you how I calculated the values, feel free to mix match and scale it.
