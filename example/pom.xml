@@ -68,6 +68,7 @@
         <mrchecker-selenium-module.version>3.141.59.3</mrchecker-selenium-module.version>
         <mrchecker-security-module.version>1.2.2</mrchecker-security-module.version>
         <mrchecker-webapi-module.version>1.2.4</mrchecker-webapi-module.version>
+        <mrchecker-database-module.version>2.2.1-SNAPSHOT</mrchecker-database-module.version>
 
         <!-- Java settings -->
         <java.compiler.version>1.8</java.compiler.version>
@@ -147,6 +148,31 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>mrchecker-webapi-module</artifactId>
             <version>${mrchecker-webapi-module.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>mrchecker-database-module</artifactId>
+            <version>${mrchecker-database-module.version}</version>
+        </dependency>
+
+        <!-- JPA dependencies -->
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>2.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.4.0.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.16</version>
         </dependency>
 
         <dependency>
