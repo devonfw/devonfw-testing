@@ -25,8 +25,8 @@ Database module is based on Object-Relational Mapping programming technique. All
 
 This module was written to allow the use of any JPA provider. The structure is represented in the schema below.
 
-image::images/image3.png[]
+image::images/modules_image3.png[]
 
 == ORM representation applied in Framework
 
-image::images/image4.png[]
+image::images/modules_image4.png[]

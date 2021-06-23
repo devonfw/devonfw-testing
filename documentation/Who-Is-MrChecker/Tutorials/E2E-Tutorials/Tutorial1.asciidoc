@@ -32,9 +32,9 @@ In order to book a table, do the following steps:
 5. Display confirmation box and send booking
 6. Check if the booking was successful.
 
-image::images/image1.png[]
+image::images/tutorials_image1.png[]
 
-image::images/image2.png[]
+image::images/tutorials_image2.png[]
 
 You can go through these steps manually and doublecheck the result.
 

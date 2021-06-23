@@ -36,14 +36,14 @@ Therefore, we have to understand, that a *test case is also code which has to be
 
 * How do we define top-notch test cases development process in *E2E MrChecker Test Framework*
 
-image::images/image5.png[]
+image::images/modules_image5.png[]
 
 == Continuous Integration (CI) and Continuous Delivery (CD)
 
 * https://github.com/devonfw/devonfw-testing/blob/develop/documentation/Who-Is-MrChecker/Test-Framework-Modules/DevOPS-Test-Module-Continuous-Integration-CI.asciidoc[Continuous Integration (CI)] - a procedure where quality gates validate test case creation process
 * https://github.com/devonfw/devonfw-testing/blob/develop/documentation/Who-Is-MrChecker/Test-Framework-Modules/DevOPS-Test-Module-Continuous-Delivery-CD.asciidoc[Continuous Delivery (CD)] - a procedure where we include created test cases, validated against CI, as smoke/regression/security 
 
-image::images/image6.png[]
+image::images/modules_image6.png[]
 
 == What should you receive from this DevOps module
 
@@ -57,7 +57,7 @@ image::images/image8.png[]
 
 Your CI process will be matched to the current project. You can easily go back to the previous configuration, test a new one or move a selected one to other projects.
 
-image::images/image9.png[]
+image::images/arch_image9.png[]
 
 DevOps module supports a delivery model in which executors are made available to the user as needed. It has such advantages as:
 
@@ -65,11 +65,11 @@ DevOps module supports a delivery model in which executors are made available to
 * Eliminating guessing on your infrastructure capacity needs
 * Not spending time on running and maintaining additional executors
 
-image::images/image10.png[]
+image::images/arch_image10.png[]
 
-image::images/image11.png[]
+image::images/arch_image11.png[]
 
-image::images/image12.png[]
+image::images/arch_image12.png[]
 
 == How to build this DevOps module
 
