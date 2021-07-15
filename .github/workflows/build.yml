@@ -1,0 +1,21 @@
+name: CI Build
+on: [push, pull_request]
+jobs:
+  build:
+    if: ${{github.repository == 'devonfw/mrchecker'}}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: '8'
+      - name: Build project with Maven
+        run: |
+            cd example
+            mvn clean compile -DskipTests=true
+            cd ..
+            cd template
+            mvn clean compile -DskipTests=true
+
